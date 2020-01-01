@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="[toc] 梯度下降法批量梯度下降(Batch Gradient Descent) &amp;emsp;&amp;emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。 $h_{\theta}\left(x^{(i)}\right)&#x3D;\theta_{1} x^{(i)}+\theta_{0}$ $J\left(\theta_{0}, \theta_{1}\right)&#x3D;\frac">
+<meta name="description" content="梯度下降法批量梯度下降(Batch Gradient Descent) &amp;emsp;&amp;emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="梯度下降法">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;01&#x2F;%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="Kevin的技术博客">
-<meta property="og:description" content="[toc] 梯度下降法批量梯度下降(Batch Gradient Descent) &amp;emsp;&amp;emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。 $h_{\theta}\left(x^{(i)}\right)&#x3D;\theta_{1} x^{(i)}+\theta_{0}$ $J\left(\theta_{0}, \theta_{1}\right)&#x3D;\frac">
+<meta property="og:description" content="梯度下降法批量梯度下降(Batch Gradient Descent) &amp;emsp;&amp;emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200101124937113.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-01-01T06:17:52.138Z">
-<meta property="article:modified_time" content="2020-01-01T06:30:09.571Z">
+<meta property="article:modified_time" content="2020-01-01T07:09:18.277Z">
 <meta property="article:author" content="Kevin">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
@@ -280,7 +280,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-01T14:30:09+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-01T15:09:18+08:00">
                 2020-01-01
               </time>
             
@@ -314,12 +314,11 @@
       
 
       
-        <p>[toc]</p>
-<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p><strong>批量梯度下降(Batch Gradient Descent)</strong></p>
-<p>&emsp;&emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。</p>
+        <h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p><strong>批量梯度下降(Batch Gradient Descent)</strong></p>
+<p>&emsp;&emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。<a id="more"></a></p>
 <p>$h_{\theta}\left(x^{(i)}\right)=\theta_{1} x^{(i)}+\theta_{0}$</p>
 <p>$J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}$</p>
-<p><a id="more"></a>$\frac{\Delta J\left(\theta_{0}, \theta_{1}\right)}{\Delta \theta_{j}}=\frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) x_{j}^{(i)}$</p>
+<p>$\frac{\Delta J\left(\theta_{0}, \theta_{1}\right)}{\Delta \theta_{j}}=\frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) x_{j}^{(i)}$</p>
 <p>$\theta_{j}(iteration)=\theta_{j}-\alpha \frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) x_{j}^{(i)}$</p>
 <p>其中 $i=1, 2, …, m$ 表示样本数，$j$ 为特征数，$a$ 为学习率，$\theta$ 为参数矩阵，${h_\theta }$ 为实际输出，$x$, $y$ 为样本输入输出，$J$ 为目标函数，$\theta (iteration)$ 为迭代更新参数。</p>
 <p>优点:<br>(1)&nbsp;一次迭代是对所有样本进行计算，此时利用矩阵进行操作，实现了并行;<br>(2)&nbsp;由全数据集确定的方向能够更好地代表样本总体，从而更准确地朝向极值所在的方向。当目标函数为凸函数时，BGD 一定能够得到全局最优。</p>
@@ -378,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/24/%E6%B7%B7%E5%90%88%E5%AF%86%E5%BA%A6%E7%BD%91%E7%BB%9C(MDN)/" rel="next" title="混合密度网络(MDN)">
-                <i class="fa fa-chevron-left"></i> 混合密度网络(MDN)
+              <a href="/2019/12/24/%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8/" rel="next" title="编码器-解码器">
+                <i class="fa fa-chevron-left"></i> 编码器-解码器
               </a>
             
           </div>
