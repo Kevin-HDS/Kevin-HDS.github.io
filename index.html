@@ -279,7 +279,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-11T14:21:42+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-11T14:33:20+08:00">
                 2020-01-11
               </time>
             
@@ -314,41 +314,14 @@
 
       
         
-          
-            <h4 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h4><p>&emsp;&emsp;深度为 h，由 $2^h-1$ 个节点构成的二叉树称为满二叉树。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200110160437882.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h4><p>&emsp;&emsp;完全二叉树是由满二叉树而引出来的，若设二叉树的深度为 h，除第 h 层外，其它各层的结点数都达到最大个数，即其它各层为一个满二叉树，第 h 层所有的结点都连续集中在最左边，堆一般都是用完全二叉树来实现的。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200110160457924.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h4><p>&emsp;&emsp;前序遍历为根-&gt;左-&gt;右，中序遍历为左-&gt;根—&gt;右，后序遍历为左—&gt;右—&gt;根。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200111133351622.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h5 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h5><p>&emsp;&emsp;DFS(Depth First Search)为从根节点出发，沿着左子树方向进行纵向遍历，直到找到叶子节点为止。然后回溯到前一个节点，进行右子树节点的遍历，直到遍历完所有可达节点为止。利用数据结构”栈”，父节点入栈，父节点出栈，先右子节点入栈，后左子节点入栈，递归遍历全部节点。<a href="https://blog.csdn.net/a2217018103/article/details/90678830" target="_blank" rel="noopener">相关链接</a></p>
-<p>算法步骤如下:<a href="https://blog.csdn.net/XTAOTWO/article/details/83625586" target="_blank" rel="noopener">相关链接</a></p>
-<p>(1) 首先将根节点 1 压入栈中【1】</p>
-<p>(2) 将 1 节点弹出，找到 1 的两个子节点 3 和 2，首先压入 3 节点，再压入 2 节点【2，3】(后压入左节点的话，会先取出左节点，这样就保证了先遍历左节点)，2 节点再栈的顶部，最先出来。</p>
-<p>(3) 弹出 2 节点，将2节点的两个子节点 5，4 压入【4，5，3】；</p>
-<p>(4) 弹出 4 节点，将 4 的子节点 9，8 压入【8，9，5，3】；</p>
-<p>(5) 弹出 8，8 没有子节点，不压入【9，5，3】；</p>
-<p>(6) 弹出 9，9 没有子节点，不压入【5，3】；</p>
-<p>(7) 弹出 5，5 有一个节点，压入 10，【10，3】；</p>
-<p>(8) 弹出 10，10 没有节点，不压入【3】；</p>
-<p>(9) 弹出 3，压入 3 的子节点 7，6【6，7】；</p>
-<p>(10) 弹出 6，没有子节点【7】；</p>
-<p>(11) 弹出 7，没有子节点，栈为空【】，算法结束，出栈顺序【1，2，4，8，9，5，10，3，6，7】。</p>
-<h6 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h6><p>&emsp;&emsp;BFS(Breadth First Search)为从根节点出发，在横向遍历二叉树层段节点的基础上纵向遍历二叉树的层次。利用数据结构”队列”，父节点入队，父节点出队列，先左子节点入队，后右子节点入队，递归遍历全部节点。<a href="https://blog.csdn.net/sinat_41144773/article/details/89530403" target="_blank" rel="noopener">相关链接</a></p>
-<p>算法过程如下:</p>
-<p>(1) 节点 1，插入队列【1】</p>
-<p>(2) 取出节点 1，插入 1 的子节点 2，3 ，节点 2 在队列的前端【2，3】</p>
-<p>(3) 取出节点 2，插入 2 的子节点 4，5，节点 3 在队列的最前端【3，4，5】</p>
-<p>(4) 取出节点 3，插入 3 的子节点 6，7，节点 4 在队列的最前端【4，5，6，7】</p>
-<p>(5) 取出节点 4，插入 3 的子节点 8，9，节点 5 在队列的最前端【5，6，7，8，9】</p>
-<p>(6) 取出节点 5，插入 5 的子节点 10，节点 6 在队列的最前端【6，7，8，9，10】</p>
-<p>(7) 取出节点 6，没有子节点，不插入，节点 7 在队列的最前端【7，8，9，10】</p>
-<p>(8) 取出节点 7，没有子节点，不插入，节点 8 在队列的最前端【8，9，10】</p>
-<p>(9) 取出节点 8，没有子节点，不插入，节点 9 在队列的最前端【9，10】</p>
-<p>(10) 取出节点 9，没有子节点，不插入，节点 10 在队列的最前端【10】</p>
-<p>(11) 取出节点 10，队列为空，算法结束，出队的顺序【1，2，3，4，5，6，7，8，9，10】。</p>
-
-          
+          <h4 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h4><p>&emsp;&emsp;深度为 h，由 $2^h-1$ 个节点构成的二叉树称为满二叉树。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/11/%E4%BA%8C%E5%8F%89%E6%A0%91/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
