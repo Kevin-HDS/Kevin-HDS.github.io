@@ -79,16 +79,38 @@
 
 
 
-<meta name="description" content="爱钻牛角尖的小学生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kevin的技术博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta name="description" content="堆&amp;emsp;&amp;emsp;堆是一种非线性结构，通俗来讲堆其实就是利用完全二叉树的结构来维护的一维数组。按照堆的特点可以把堆分为大顶堆和小顶堆，大顶堆是每个结点的值都大于或等于其左右子结点的值。小顶堆是每个结点的值都小于或等于其左右子结点的值。堆的这种特性常常被当做优先队列使用，因为可以快速的访问到”最重要”的元素。  堆中的结点按层进行编号，将这种逻辑结构映射到数组中如下。  大顶堆: arr[i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;%E5%A0%86&#x2F;index.html">
 <meta property="og:site_name" content="Kevin的技术博客">
-<meta property="og:description" content="爱钻牛角尖的小学生">
+<meta property="og:description" content="堆&amp;emsp;&amp;emsp;堆是一种非线性结构，通俗来讲堆其实就是利用完全二叉树的结构来维护的一维数组。按照堆的特点可以把堆分为大顶堆和小顶堆，大顶堆是每个结点的值都大于或等于其左右子结点的值。小顶堆是每个结点的值都小于或等于其左右子结点的值。堆的这种特性常常被当做优先队列使用，因为可以快速的访问到”最重要”的元素。  堆中的结点按层进行编号，将这种逻辑结构映射到数组中如下。  大顶堆: arr[i">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1590962&#x2F;201903&#x2F;1590962-20190318210706226-1501863648.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161217182857323-2092264199.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161217192038651-934327647.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161217192209433-270379236.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161217192854636-1823585260.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161217193347886-1142194411.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161217194207620-1455153342.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161218153110495-1280388728.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161218152929339-1114983222.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;1024555&#x2F;201612&#x2F;1024555-20161218152348229-935654830.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200113195224832.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200113195303398.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200113195324785.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200113195342654.jpg?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2020011319540550.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200113195421977.jpg?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tldmluX0hlaWRhc2h1YWk&#x3D;,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;2018070723580585">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;2018070800030940">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;11332031-696c5f91f0d3068d.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip|imageView2&#x2F;2&#x2F;w&#x2F;1142&#x2F;format&#x2F;webp">
+<meta property="article:published_time" content="2020-01-13T13:21:12.781Z">
+<meta property="article:modified_time" content="2020-01-13T13:27:40.094Z">
 <meta property="article:author" content="Kevin">
 <meta property="article:tag" content="发现 思考 记录">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1590962&#x2F;201903&#x2F;1590962-20190318210706226-1501863648.png">
 
 
 
@@ -118,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/01/13/堆/"/>
 
 
 
 
 
-  <title>Kevin的技术博客</title>
+  <title>堆 | Kevin的技术博客</title>
   
 
 
@@ -143,8 +165,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -259,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/13/%E5%A0%86/" itemprop="url">堆</a></h1>
+          <h1 class="post-title" itemprop="name headline">堆</h1>
         
 
         <div class="post-meta">
@@ -345,9 +364,7 @@
       
 
       
-        
-          
-            <h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>&emsp;&emsp;堆是一种非线性结构，通俗来讲堆其实就是利用完全二叉树的结构来维护的一维数组。按照堆的特点可以把堆分为大顶堆和小顶堆，大顶堆是每个结点的值都大于或等于其左右子结点的值。小顶堆是每个结点的值都小于或等于其左右子结点的值。堆的这种特性常常被当做优先队列使用，因为可以快速的访问到”最重要”的元素。</p>
+        <h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>&emsp;&emsp;堆是一种非线性结构，通俗来讲堆其实就是利用完全二叉树的结构来维护的一维数组。按照堆的特点可以把堆分为大顶堆和小顶堆，大顶堆是每个结点的值都大于或等于其左右子结点的值。小顶堆是每个结点的值都小于或等于其左右子结点的值。堆的这种特性常常被当做优先队列使用，因为可以快速的访问到”最重要”的元素。</p>
 <p><img src="https://img2018.cnblogs.com/blog/1590962/201903/1590962-20190318210706226-1501863648.png" alt></p>
 <p>堆中的结点按层进行编号，将这种逻辑结构映射到数组中如下。</p>
 <p><img src="https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161217182857323-2092264199.png" alt></p>
@@ -387,8 +404,6 @@
 <h5 id="求中位数"><a href="#求中位数" class="headerlink" title="求中位数"></a>求中位数</h5><p>&emsp;&emsp;我们需要维护两个堆，一个大顶堆，一个小顶堆。大顶堆中存储前半部分数据，小顶堆中存储后半部分数据，且小顶堆中的数据都大于大顶堆中的数据。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/11332031-696c5f91f0d3068d.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1142/format/webp" alt></p>
 
-          
-        
       
     </div>
     
@@ -405,148 +420,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/11/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kevin的技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/11/%E4%BA%8C%E5%8F%89%E6%A0%91/" itemprop="url">二叉树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-11T14:04:40+08:00">
-                2020-01-11
-              </time>
+              <a href="/2020/01/11/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" title="二叉树">
+                <i class="fa fa-chevron-left"></i> 二叉树
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-11T14:33:20+08:00">
-                2020-01-11
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h4 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h4><p>&emsp;&emsp;深度为 h，由 $2^h-1$ 个节点构成的二叉树称为满二叉树。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/11/%E4%BA%8C%E5%8F%89%E6%A0%91/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -556,420 +451,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/01/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kevin的技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/01/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/" itemprop="url">梯度下降法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-01T14:17:52+08:00">
-                2020-01-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-01T15:09:18+08:00">
-                2020-01-01
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p><strong>批量梯度下降(Batch Gradient Descent)</strong></p>
-<p>&emsp;&emsp;批量梯度下降是最原始的形式，它是指在每一次迭代时使用所有样本来进行梯度的更新。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/01/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/%E6%B7%B7%E5%90%88%E5%AF%86%E5%BA%A6%E7%BD%91%E7%BB%9C(MDN)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kevin的技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/24/%E6%B7%B7%E5%90%88%E5%AF%86%E5%BA%A6%E7%BD%91%E7%BB%9C(MDN)/" itemprop="url">混合密度网络(MDN)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T00:00:00+08:00">
-                2019-12-24
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-24T14:44:03+08:00">
-                2019-12-24
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;神经网络模型在训练过程中，输出样本值应该是一个确定值，对于下图红色所示的数据点进行拟合，此时只需建立简单神经网络，定义一个输出节点，便可以实现蓝色数据点所示的拟合效果。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/24/%E6%B7%B7%E5%90%88%E5%AF%86%E5%BA%A6%E7%BD%91%E7%BB%9C(MDN)/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kevin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kevin的技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/24/%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8/" itemprop="url">编码器-解码器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T00:00:00+08:00">
-                2019-12-24
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-24T14:43:11+08:00">
-                2019-12-24
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><b>编码器</b></p>
-<p>&emsp;&emsp;编码器的作用是把一个不定长的输入序列$x_{1}, x_{2}, \dots, x_{T}$转化成一个定长的向量$c$，该向量编码了输入序列$x_{1}, x_{2}, \dots, x_{T}$的序列。常用的编码器是循环神经网络，假设该循环神经网络单元函数为$f$（可以是 RNN，LSTM 或者 GRU)，那么隐状态量为</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/24/%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -977,6 +463,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -997,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1058,6 +557,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#堆"><span class="nav-number">1.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆排序"><span class="nav-number">2.</span> <span class="nav-text">堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大顶堆"><span class="nav-number">2.1.</span> <span class="nav-text">大顶堆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小顶堆"><span class="nav-number">2.2.</span> <span class="nav-text">小顶堆</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆的插入和删除"><span class="nav-number">3.</span> <span class="nav-text">堆的插入和删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆的应用"><span class="nav-number">4.</span> <span class="nav-text">堆的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优先级队列"><span class="nav-number">4.1.</span> <span class="nav-text">优先级队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并有序文件"><span class="nav-number">4.2.</span> <span class="nav-text">合并有序文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求-top-k"><span class="nav-number">4.3.</span> <span class="nav-text">求 top k</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求中位数"><span class="nav-number">4.4.</span> <span class="nav-text">求中位数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1198,6 +713,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
