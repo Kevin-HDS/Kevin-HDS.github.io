@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;程序运行期间的内存分区包括代码区，常量区，静态区和动态区。其中代码区存放 CPU 指令码，常量区存放只读常量，该区只读，不可写，静态区存放静态变量，该区在程序编译完成后就决定了其大小，程序运行期间该区的大小不会变，该区可读写，动态区分为堆区和栈区，ROM(read-only memory)为只读内存，RAM(random access memory)为随机存储内存，堆区和栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存分区">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;14&#x2F;%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA&#x2F;index.html">
+<meta property="og:site_name" content="Kevin的技术博客">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;程序运行期间的内存分区包括代码区，常量区，静态区和动态区。其中代码区存放 CPU 指令码，常量区存放只读常量，该区只读，不可写，静态区存放静态变量，该区在程序编译完成后就决定了其大小，程序运行期间该区的大小不会变，该区可读写，动态区分为堆区和栈区，ROM(read-only memory)为只读内存，RAM(random access memory)为随机存储内存，堆区和栈">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180209135339250?watermark&#x2F;2&#x2F;text&#x2F;aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDQ3MDM2MQ&#x3D;&#x3D;&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA&#x3D;&#x3D;&#x2F;dissolve&#x2F;70&#x2F;gravity&#x2F;SouthEast">
+<meta property="article:published_time" content="2020-01-14T08:39:47.681Z">
+<meta property="article:modified_time" content="2020-01-14T08:44:19.103Z">
+<meta property="article:author" content="Kevin">
+<meta property="article:tag" content="发现 思考 记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180209135339250?watermark&#x2F;2&#x2F;text&#x2F;aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDQ3MDM2MQ&#x3D;&#x3D;&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA&#x3D;&#x3D;&#x2F;dissolve&#x2F;70&#x2F;gravity&#x2F;SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/14/内存分区/"/>
+
+
+
+
+
+  <title>内存分区 | Kevin的技术博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kevin的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习点点滴滴</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/14/%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://im0-tub-com.yandex.net/i?id=e0925b62b332be1e67b7eb03d03af6c8&n=13">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kevin的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">内存分区</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T16:39:47+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-14T16:44:19+08:00">
+                2020-01-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%85%E5%AD%98/" itemprop="url" rel="index">
+                    <span itemprop="name">内存</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;程序运行期间的内存分区包括代码区，常量区，静态区和动态区。其中代码区存放 CPU 指令码，常量区存放只读常量，该区只读，不可写，静态区存放静态变量，该区在程序编译完成后就决定了其大小，程序运行期间该区的大小不会变，该区可读写，动态区分为堆区和栈区，ROM(read-only memory)为只读内存，RAM(random access memory)为随机存储内存，堆区和栈区都存在于 RAM 区。程序运行期间其大小处于动态变化中，处于该区的变量也会时而被创建时而被销毁。<a href="https://blog.csdn.net/u014470361/article/details/79297601" target="_blank" rel="noopener">相关链接</a><a id="more"></a></p>
+<p><img src="https://img-blog.csdn.net/20180209135339250?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDQ3MDM2MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
+<h4 id="常量区"><a href="#常量区" class="headerlink" title="常量区"></a>常量区</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *p = <span class="string">"abcdef"</span>;</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *p;</span><br><span class="line">p = <span class="string">"abcdef"</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;定义一个 char <em> 型的指针 p，p 存放的是字符串常量 “abcdef” 的首地址，字符串常量 “abcdef” 是存放在常量区的，也就是 p 是指向常量区的，那么 p 指向的区域里面的内容是不可以得修改，只可以 </em>p 来读取 p 指向的内容，当然也可以把指针 p 移走，指向其他区域。测试代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">char</span> *p = <span class="string">"abcdef"</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%s\n"</span>, p , p);  <span class="comment">//打印指针p的地址和p指向的字符串内容</span></span><br><span class="line">    p=<span class="string">"qwedma"</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%s\n"</span>, p , p);  <span class="comment">//打印指针p的地址和p指向的字符串内容</span></span><br><span class="line">    p[<span class="number">0</span>] = <span class="string">'l'</span>;  <span class="comment">//尝试把 p 指向的第一个字符 q 修改为 l，报错不可修改</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%s\n"</span>, p , p);  <span class="comment">//打印指针p的地址和p指向的字符串内容</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[] = <span class="string">"abcd"</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;定义一个字符数组，但是这个 str 数组是存放在栈区的，然后再把字符串常量 “abcd” 拷贝到栈区的 str 数组内，那么此时的 str 是可以修改的。测试代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">char</span> str[] = <span class="string">"abcd"</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%s\n"</span>, str , str);</span><br><span class="line">    str[<span class="number">0</span>]=<span class="string">'e'</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%s\n"</span>, str , str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="动态区"><a href="#动态区" class="headerlink" title="动态区"></a>动态区</h4><h5 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h5><p>&emsp;&emsp;栈区由编译器自动分配释放，存放函数的参数值、返回值和局部变量，在程序运行过程中实时分配和释放，栈区由操作系统自动管理，无须手动管理，栈区是先进后出原则。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">int</span> b=<span class="number">0</span>;    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a:%p:%d\n"</span>, &amp;a, a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"b:%p:%d\n"</span>, &amp;b, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;可以看到后定义的局部变量 b 地址是比 a 小的，即栈区是向下生长，a 变量没有进行初始化，打印出的 a 是垃圾值，编译器不会把局部变量初始化为 0。但是需要注意如果运行于 debug 调试模式，运行时机制会把栈空间全部初始化为 0，这就是解释了为什么平时在 debug 时看到的未初始化的局部变量初始值是 0。使用局部变量时，尽量要先进行初始化，避免垃圾值造成错乱。</p>
+<h5 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h5><p>堆区是调用 malloc 函数来申请内存空间，这部分空间使用完后需要调用 free() 函数来释放。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> * <span class="title">mallc</span><span class="params">(<span class="keyword">size_t</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>函数的输入是分配的字节大小，返回是一个 void<em> 型的指针，该指针指向分配空间的首地址，void </em> 型指针可以任意转换为其他类型的指针。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">int</span> *p1=<span class="built_in">malloc</span>(<span class="number">4</span>);<span class="comment">//申请4字节的空间</span></span><br><span class="line">    *p1=<span class="number">123</span>;<span class="comment">// 该空间赋值123</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%d\n"</span>,p1,*p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p\n"</span>,&amp;p1);</span><br><span class="line">    <span class="built_in">free</span>(p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p:%d\n"</span>,p1,*p1);</span><br><span class="line">    p1 = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p\n"</span>,p1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;上述语句申请了 4 个字节的空间，空间的首地址赋给指针 p1，存在于堆区，指针 p1 本身也是需要存放的，p1 本身是存放在栈区，<code>free(p1)</code>内存释放函数 malloc() 开辟的内存的首地址，将内存标记为可用且将里面的内容清空为 0，但指针 p1 还是指向这片空间。比较安全的做法是<code>p1 = NULL</code>把 p1 指针释放，避免造成野指针。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">int</span> *p1=<span class="built_in">malloc</span>(<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">int</span> *p2=<span class="built_in">malloc</span>(<span class="number">4</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1:%p\n"</span>, p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p2:%p\n"</span>, p2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>p2 的地址是大于 p1 的地址，验证堆区是向上生长，后申请的空间地址会依次增加。</p>
+<h5 id="申请方式"><a href="#申请方式" class="headerlink" title="申请方式"></a>申请方式</h5><p>&emsp;&emsp;stack 由系统主动分配，比如声明在函数中一个局部变量<code>int b</code>，系统主动在栈中为 b 开辟空间。heap 由程序员自己申请，并指明大小，若程序员不释放，会造成内存泄露，程序结束时可由操作系统(OS)回收，分配方式类似于链表。<br>&emsp;&emsp;在 c 中使用 malloc 函数，如<code>p1 = (char *)malloc(10)</code>，在 C++ 中用 new 运算符，如<code>p2 = (char *)new(10)</code>，注意 p1、p2 本身是在栈中。</p>
+<h5 id="申请响应"><a href="#申请响应" class="headerlink" title="申请响应"></a>申请响应</h5><p>&emsp;&emsp;栈仅仅要栈的剩余空间大于所申请空间，系统将为程序提供内存，否则将报异常提示栈溢出。堆首先应该知道操作系统有一个记录空暇内存地址的链表，当系统收到程序的申请时，会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空暇结点链表中删除，并将该结点的空间分配给程序。对于大多数操作系统，会在这块内存空间中的首地址处记录本次分配的大小，代码中的 delete 语句才能正确的释放本内存空间。对于找到堆结点的大小不一定正好等于申请的大小的情况，系统会主动的将多余部分又一次放入空暇链表中。</p>
+<h5 id="申请大小"><a href="#申请大小" class="headerlink" title="申请大小"></a>申请大小</h5><p>&emsp;&emsp;在 Windows 下栈是向低地址扩展的数据结构，是一块连续的内存区域，即栈顶地址和栈的最大容量是系统预先规定好的，栈的大小是 1M 或者 2M，Linux下，默认栈空间大小为 8MB，可通过<code>ulimit -s</code>来设置，但是最大不超过 8M。假设申请的空间超过栈的剩余空间时，将提示 overflow，因此能从栈获得的空间较小。</p>
+<p>&emsp;&emsp;堆是向高地址扩展的数据结构，是不连续的内存区域，这是因为系统是用链表来存储空暇内存地址，自然是不连续的，而链表的遍历方向是由低地址向高地址。如果系统是 32位，堆大小为 4G。堆分配的空间在逻辑地址上是连续的，但在物理地址上是不连续的(采用了页式内存管理，windows 下有段机制、分页机制)，如果逻辑地址空间上已经没有一段连续且足够大的空间，则分配内存失败。</p>
+<h4 id="静态区-全局区"><a href="#静态区-全局区" class="headerlink" title="静态区(全局区)"></a>静态区(全局区)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> c;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> b=<span class="number">1</span>;</span><br><span class="line">    b++;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"b:0x%p: %d\n"</span>, &amp;b , b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a: 0x%p: %d\n"</span>, &amp;a , a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"c: 0x%p: %d\n"</span>, &amp;c , c);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">uint8_t</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        test();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;a 是静态全局变量，b 静态局部变量，c 是全局变量，它们都存放在静态区，a 和 c 并未初始化，打印出来都是 0，说明编译器自动把他们初始化为 0，b 在 for 循环中初始化 5 次，但实际效果是 b 仅初始化一次，后面每次调用 b 都是上次的值，且 b 的地址一直是不变的，编译器只会为第一次初始化的 b 分配内存，后面 4 次初始化是无效的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/14/%E5%A0%86/" rel="next" title="堆">
+                <i class="fa fa-chevron-left"></i> 堆
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://im0-tub-com.yandex.net/i?id=e0925b62b332be1e67b7eb03d03af6c8&n=13"
+                alt="Kevin" />
+            
+              <p class="site-author-name" itemprop="name">Kevin</p>
+              <p class="site-description motion-element" itemprop="description">爱钻牛角尖的小学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量区"><span class="nav-number">1.</span> <span class="nav-text">常量区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态区"><span class="nav-number">2.</span> <span class="nav-text">动态区</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#栈区"><span class="nav-number">2.1.</span> <span class="nav-text">栈区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆区"><span class="nav-number">2.2.</span> <span class="nav-text">堆区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#申请方式"><span class="nav-number">2.3.</span> <span class="nav-text">申请方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#申请响应"><span class="nav-number">2.4.</span> <span class="nav-text">申请响应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#申请大小"><span class="nav-number">2.5.</span> <span class="nav-text">申请大小</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态区-全局区"><span class="nav-number">3.</span> <span class="nav-text">静态区(全局区)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kevin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
